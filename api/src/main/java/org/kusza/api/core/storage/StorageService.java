@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 public interface StorageService {
     @GetMapping(
-            value = "/storage/{itemId}",
+            value = "/storage/info/{itemId}",
             produces = "application/json"
     )
     ItemStorageInfo getItemStorageInfo(@PathVariable int itemId);

@@ -23,8 +23,8 @@ public class InMemoryStorageRepo {
         addStoragePlace(new StoragePlace(3, 1, "A03"));
     }
     public void addStoragePlace(StoragePlace storagePlace) {
-        if(storagePlaces.get(storagePlace.getStorageId()) == null) {
-            storagePlaces.put(storagePlace.getStorageId(), storagePlace);
+        if(storagePlaces.get(storagePlace.getStoragePlaceId()) == null) {
+            storagePlaces.put(storagePlace.getStoragePlaceId(), storagePlace);
             LOG.info("Added storagePlace Name: {} | Id: {} ", storagePlace.getStoragePlaceName(), storagePlace.getStorageId());
             return;
         }
