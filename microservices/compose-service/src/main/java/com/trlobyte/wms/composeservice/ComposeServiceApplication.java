@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan("org.kusza")
 @ComponentScan("com.trlobyte")
 public class ComposeServiceApplication {
-
 	@Bean
 	RestTemplate restTemplate() {
 		return new RestTemplate();

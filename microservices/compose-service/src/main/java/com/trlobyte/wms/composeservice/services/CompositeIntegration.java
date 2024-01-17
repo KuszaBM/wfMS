@@ -26,10 +26,10 @@ public class CompositeIntegration implements ItemService, StorageService {
     public CompositeIntegration(
             RestTemplate restTemplate,
             ObjectMapper mapper,
-            @Value("${app.item-service.host") String itemServiceHost,
-            @Value("${app.storage-service.host") String storageServiceHost,
-            @Value("${app.item-service.port") int itemServicePort,
-            @Value("${app.storage-service.port") int storageServicePort) {
+            @Value("${app.item-service.host}") String itemServiceHost,
+            @Value("${app.storage-service.host}") String storageServiceHost,
+            @Value("${app.item-service.port}") int itemServicePort,
+            @Value("${app.storage-service.port}") int storageServicePort) {
 
         this.restTemplate = restTemplate;
         this.mapper = mapper;
