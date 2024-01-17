@@ -1,0 +1,8 @@
+ include ':microservices:compose-service'
+ include ':microservices:item-service'
+ include ':microservices:project-service'
+ include ':microservices:storage-service'
+ include ':microservices:warehouse-service'
+include 'api'
+include 'util'
+

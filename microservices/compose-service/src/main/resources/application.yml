@@ -1,0 +1,10 @@
+server.port: 7000
+server.error.include-message: always
+
+app:
+  item-service:
+    host: localhost
+    port: 7001
+  storage-service:
+    host: localhost
+    port: 7002
