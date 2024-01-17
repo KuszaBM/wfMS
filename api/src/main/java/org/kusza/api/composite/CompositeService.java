@@ -12,7 +12,7 @@ public interface CompositeService {
     )
     public void addItemsToLocation(@RequestParam int locationId, @RequestParam int itemId);
     @GetMapping(
-            value = "ui/getProduct/{itemId}",
+            value = "/ui/getItem/{itemId}",
             produces = "application/json"
     )
     Item getItem(@PathVariable int itemId);
