@@ -36,6 +36,6 @@ public class StorageServiceImp implements StorageService {
     }
     @Override
     public StoragePlace getStoragePlace(int storageId) {
-        return null;
+        return inMemoryStorageRepo.getStoragePlace(storageId);
     }
 }
