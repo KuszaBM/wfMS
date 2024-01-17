@@ -4,7 +4,9 @@ import org.kusza.api.composite.CompositeService;
 import org.kusza.api.core.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class CompositeServiceImpl implements CompositeService {
 
     private static final Logger LOG = LoggerFactory.getLogger(CompositeServiceImpl.class);
