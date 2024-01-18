@@ -7,7 +7,7 @@ public class ItemStorageRequest {
     private final int itemId;
     private final int fromLocationId;
     private final int itemQty;
-    private final int toLocationId;
+    private final int storagePlaceId;
     private final Timestamp requestedTs;
     private Timestamp acceptedTs = null;
 
@@ -16,8 +16,17 @@ public class ItemStorageRequest {
         this.itemId = itemId;
         this.fromLocationId = fromLocationId;
         this.itemQty = itemQty;
-        this.toLocationId = storagePlaceId;
+        this.storagePlaceId = storagePlaceId;
         this.requestedTs = requestedTs;
+    }
+
+    public ItemStorageRequest() {
+        this.operationId = 0;
+        this.itemId = 0;
+        this.fromLocationId = 0;
+        this.itemQty = 0;
+        this.storagePlaceId = 0;
+        this.requestedTs = null;
     }
 
     public int getOperationId() {
@@ -33,16 +42,14 @@ public class ItemStorageRequest {
     }
 
     public int getStoragePlaceId() {
-        return toLocationId;
+        return storagePlaceId;
     }
 
     public int getFromLocationId() {
         return fromLocationId;
     }
 
-    public int getToLocationId() {
-        return toLocationId;
-    }
+
 
     public Timestamp getRequestedTs() {
         return requestedTs;
