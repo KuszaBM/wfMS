@@ -23,5 +23,4 @@ public interface StorageService {
             produces = "application/json"
     )
     StoragePlace getStoragePlace(@PathVariable int storageId);
-
 }
