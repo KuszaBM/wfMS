@@ -19,6 +19,14 @@ public class InMemoryStorageInfoRepo {
     public InMemoryStorageInfoRepo() {
         this.storedItems = new ArrayList<>();
         this.requestHistory = new ArrayList<>();
+
+
+        storedItems.add(new ItemStorageInfo(1, 1, 10));
+        storedItems.add(new ItemStorageInfo(2, 1, 11));
+        storedItems.add(new ItemStorageInfo(1, 2, 10));
+
+        ItemStorageRequest req = new ItemStorageRequest(1, 10, 54, 50, 2, new Timestamp(System.currentTimeMillis()));
+        updateStorage(req);
     }
 
     public void updateStorage(ItemStorageRequest request) {
