@@ -16,4 +16,19 @@ public class ItemAggregatedStorageData {
         this.itemQuantity = itemQuantity;
         this.itemStorageInfos = itemStorageInfos;
     }
+    public int getItemId() {
+        return itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public int getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public List<ItemStorageInfo> getItemStorageInfos() {
+        return itemStorageInfos;
+    }
 }

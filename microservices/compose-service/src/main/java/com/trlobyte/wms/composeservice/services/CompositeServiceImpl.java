@@ -1,7 +1,9 @@
 package com.trlobyte.wms.composeservice.services;
 
 import org.kusza.api.composite.CompositeService;
+import org.kusza.api.composite.ItemAggregatedStorageData;
 import org.kusza.api.core.item.Item;
+import org.kusza.api.core.warehouse.ItemStorageInfo;
 import org.kusza.api.core.warehouse.ItemStorageRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +26,17 @@ public class CompositeServiceImpl implements CompositeService {
     }
 
     @Override
-    public Item getItem(int itemId) {
+    public ItemAggregatedStorageData getItem(int itemId) {
         LOG.debug("Retrieving item with id {}", itemId);
-        return integration.getItem(itemId);
+        Item item = integration.getItem(itemId);
+        List<ItemStorageInfo> itemStorageInfos = integration.getItemStorageInfo(itemId);
+        int totalQty = 0;
+        for (ItemStorageInfo info : itemStorageInfos) {
+            totalQty = totalQty + info.getQuantity();
+        }
+        LOG.debug("Total quantity for {} | qty = {}", itemId, totalQty);
+        ItemAggregatedStorageData dataItem = new ItemAggregatedStorageData(item.getItemId(),item.getName(), totalQty, itemStorageInfos);
+        return dataItem;
     }
 
     @Override

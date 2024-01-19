@@ -8,6 +8,7 @@ import org.kusza.api.core.storage.StorageService;
 import org.kusza.api.core.warehouse.ItemStorageInfo;
 import org.kusza.api.core.warehouse.ItemStorageRequest;
 import org.kusza.api.core.warehouse.WarehouseService;
+import org.kusza.util.http.HttpErrorInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,19 +51,31 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
         storageServiceUrl = "http://" + storageServiceHost + ":" + storageServicePort + "/storage/";
         warehouseServiceUrl = "http://" + warehouseServiceHost + ":" + warehouseServicePort + "/warehouse/";
     }
+    private String getErrorMessage(HttpClientErrorException ex) {
+        try {
+            return mapper.readValue(ex.getResponseBodyAsString(), HttpErrorInfo.class).getMessage();
+        } catch (IOException ioex) {
+            return ex.getMessage();
+        }
+    }
 
     @Override
     public Item getItem(int itemId) {
-        String requestUrl = itemServiceUrl + itemId;
-        LOG.debug("Calling getItem APU on URL: {}", requestUrl);
+        try {
+            String requestUrl = itemServiceUrl + itemId;
+            LOG.debug("Calling getItem APU on URL: {}", requestUrl);
 
-        Item foundItem = restTemplate.getForObject(requestUrl, Item.class);
-        if(foundItem == null) {
-            LOG.debug("No item with id: {}", itemId);
+            Item foundItem = restTemplate.getForObject(requestUrl, Item.class);
+            if (foundItem == null) {
+                LOG.debug("No item with id: {}", itemId);
+                return null;
+            }
+            LOG.debug("found item with id: {}", itemId);
+            return foundItem;
+        } catch (Exception ex) {
+            LOG.warn("exception while calling method - {}", ex.getMessage());
             return null;
         }
-        LOG.debug("found item with id: {}", itemId);
-        return foundItem;
     }
 
     @Override
@@ -75,21 +90,32 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
 
     @Override
     public List<ItemStorageInfo> getItemStorageInfo(int itemId) {
-        return null;
+        try {
+            String url = warehouseServiceUrl + "warehouse/getItemStorageInfo/" + itemId;
+            LOG.debug("Will call getItemStorageInfo{} API on URL: {}", itemId, url);
+            List<ItemStorageInfo> storageInfos = restTemplate
+                    .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<ItemStorageInfo>>() {})
+                    .getBody();
+            LOG.debug("Got storage info for item {} with {} elements", itemId, storageInfos.size());
+            return storageInfos;
+        } catch (Exception ex) {
+            LOG.warn("exception while calling method - {}", ex.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     @Override
     public List<ItemStorageRequest> getRequestHistory() {
         try {
             String url = warehouseServiceUrl + "getRequestHistory";
-            LOG.debug("Will call getRecommendations API on URL: {}", url);
+            LOG.debug("Will call getRequestHistory API on URL: {}", url);
             List<ItemStorageRequest> history = restTemplate
                     .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<ItemStorageRequest>>() {})
                     .getBody();
             LOG.debug("Got history of warehouse requests with {} elements", history.size());
             return history;
         } catch (Exception ex) {
-            LOG.warn("exception while calling method - ", ex);
+            LOG.warn("exception while calling method - {}", ex.getMessage());
             return new ArrayList<>();
         }
     }

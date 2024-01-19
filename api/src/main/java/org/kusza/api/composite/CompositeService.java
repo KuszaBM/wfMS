@@ -18,7 +18,7 @@ public interface CompositeService {
             value = "/ui/getItem/{itemId}",
             produces = "application/json"
     )
-    Item getItem(@PathVariable int itemId);
+    ItemAggregatedStorageData getItem(@PathVariable int itemId);
     @GetMapping(
             value = "/ui/getHistoryStorageRequests",
             produces = "application/json"
