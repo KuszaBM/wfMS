@@ -1,25 +1,25 @@
 version: '2.1'
 
 services:
-  product:
+  item:
     build: microservices/item-service
     mem_limit: 512m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
-  recommendation:
+  warehouse:
     build: microservices/warehouse-service
     mem_limit: 512m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
-  review:
+  storage:
     build: microservices/storage-service
     mem_limit: 512m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
-  product-composite:
+  compose:
     build: microservices/compose-service
     mem_limit: 512m
     ports:
