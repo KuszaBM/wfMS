@@ -8,3 +8,21 @@ app:
   storage-service:
     host: localhost
     port: 7002
+  warehouse-service:
+    host: localhost
+    port: 7003
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080
+app:
+  item-service:
+    host: localhost
+    port: 8080
+  storage-service:
+    host: localhost
+    port: 8080
+  warehouse-service:
+    host: localhost
+    port: 8080
