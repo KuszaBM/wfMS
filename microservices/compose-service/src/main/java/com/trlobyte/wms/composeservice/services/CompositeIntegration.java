@@ -46,7 +46,7 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
 
         itemServiceUrl = "http://" + itemServiceHost + ":" + itemServicePort + "/item/";
         storageServiceUrl = "http://" + storageServiceHost + ":" + storageServicePort + "/storage/";
-        warehouseServiceUrl = "http://" + storageServiceHost + ":" + storageServicePort + "/warehouse/";
+        warehouseServiceUrl = "http://" + warehouseServiceHost + ":" + warehouseServicePort + "/warehouse/";
     }
 
     @Override
