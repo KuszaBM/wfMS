@@ -18,11 +18,11 @@ spring.config.activate.on-profile: docker
 server.port: 8080
 app:
   item-service:
-    host: localhost
+    host: item
     port: 8080
   storage-service:
-    host: localhost
+    host: storage
     port: 8080
   warehouse-service:
-    host: localhost
+    host: warehouse
     port: 8080
