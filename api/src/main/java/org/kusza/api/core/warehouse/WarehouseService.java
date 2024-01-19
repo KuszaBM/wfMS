@@ -17,7 +17,7 @@ public interface WarehouseService {
     List<ItemStorageInfo> getItemStorageInfo(@PathVariable int itemId);
 
     @GetMapping(
-            value = "warehouse/getRequestHistory",
+            value = "/warehouse/getRequestHistory",
             produces = "application/json"
     )
     List<ItemStorageRequest> getRequestHistory();
