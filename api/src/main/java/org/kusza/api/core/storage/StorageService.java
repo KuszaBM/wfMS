@@ -4,11 +4,6 @@ import org.kusza.api.core.warehouse.ItemStorageInfo;
 import org.springframework.web.bind.annotation.*;
 
 public interface StorageService {
-    @GetMapping(
-            value = "/storage/info/{itemId}",
-            produces = "application/json"
-    )
-    ItemStorageInfo getItemStorageInfo(@PathVariable int itemId);
     @PostMapping(
             value = "/storage/addStoragePlace",
             consumes = "application/json"
