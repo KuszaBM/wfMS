@@ -16,12 +16,6 @@ public class StorageServiceImp implements StorageService {
     public StorageServiceImp(InMemoryStorageRepo inMemoryStorageRepo) {
         this.inMemoryStorageRepo = inMemoryStorageRepo;
     }
-
-    @Override
-    public ItemStorageInfo getItemStorageInfo(int itemId) {
-        return null;
-    }
-
     @Override
     public void crateStoragePlace(StoragePlace storagePlace) {
         inMemoryStorageRepo.addStoragePlace(storagePlace);
