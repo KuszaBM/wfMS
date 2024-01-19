@@ -15,6 +15,12 @@ public class InMemoryItemRepo {
 
     public InMemoryItemRepo() {
         this.items = new HashMap<>();
+        try {
+            addItem(new Item(13, "cp1", 1000, 9.2));
+            addItem(new Item(14, "cp2", 1100, 14.0));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     public Item getItemById(int itemId) {
         return items.get(itemId);
