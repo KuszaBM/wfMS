@@ -91,7 +91,7 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
     @Override
     public List<ItemStorageInfo> getItemStorageInfo(int itemId) {
         try {
-            String url = warehouseServiceUrl + "warehouse/getItemStorageInfo/" + itemId;
+            String url = warehouseServiceUrl + "getItemStorageInfo/" + itemId;
             LOG.debug("Will call getItemStorageInfo{} API on URL: {}", itemId, url);
             List<ItemStorageInfo> storageInfos = restTemplate
                     .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<ItemStorageInfo>>() {})
