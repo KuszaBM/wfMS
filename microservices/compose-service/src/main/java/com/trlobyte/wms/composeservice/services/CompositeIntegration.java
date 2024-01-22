@@ -92,11 +92,11 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
     public List<ItemStorageInfo> getItemStorageInfo(int itemId) {
         try {
             String url = warehouseServiceUrl + "getItemStorageInfo/" + itemId;
-            LOG.debug("Will call getItemStorageInfo{} API on URL: {}", itemId, url);
+            LOG.info("Will call getItemStorageInfo{} API on URL: {}", itemId, url);
             List<ItemStorageInfo> storageInfos = restTemplate
                     .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<ItemStorageInfo>>() {})
                     .getBody();
-            LOG.debug("Got storage info for item {} with {} elements", itemId, storageInfos.size());
+            LOG.info("Got storage info for item {} with {} elements", itemId, storageInfos.size());
             return storageInfos;
         } catch (Exception ex) {
             LOG.warn("exception while calling method - {}", ex.getMessage());

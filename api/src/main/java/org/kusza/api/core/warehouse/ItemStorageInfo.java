@@ -4,7 +4,13 @@ public class ItemStorageInfo {
     private final int itemStorageInfoId;
     private final int storagePlaceId;
     private final int itemId;
-    private int quantity;
+    private int quantity = 0;
+
+    public  ItemStorageInfo() {
+        this.itemStorageInfoId = 0;
+        this.storagePlaceId = 0;
+        this.itemId = 0;
+    }
 
     public ItemStorageInfo(int itemStorageInfoId, int storagePlaceId, int itemId) {
         this.itemStorageInfoId = itemStorageInfoId;
