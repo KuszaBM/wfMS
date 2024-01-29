@@ -11,15 +11,15 @@ import java.util.Map;
 @Repository
 public class InMemoryItemRepo {
     Logger LOG = LoggerFactory.getLogger("ItemRepo");
-    private Map<Integer, Item> items;
+    private Map<String, Item> items;
 
     public InMemoryItemRepo() {
         this.items = new HashMap<>();
         try {
-            addItem(new Item(13, "cp1", 1000, 9.2));
-            addItem(new Item(14, "cp2", 1100, 14.0));
-            addItem(new Item(10, "item-1", 1100, 1.0));
-            addItem(new Item(11, "item-2", 1200, 10.0));
+            addItem(new Item("P01", "cp1", 1000, 9.2));
+            addItem(new Item("P02", "cp2", 1100, 14.0));
+            addItem(new Item("P03", "item-1", 1100, 1.0));
+            addItem(new Item("P04", "item-2", 1200, 10.0));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

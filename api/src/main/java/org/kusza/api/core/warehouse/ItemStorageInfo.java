@@ -2,24 +2,24 @@ package org.kusza.api.core.warehouse;
 
 public class ItemStorageInfo {
     private final int itemStorageInfoId;
-    private final int storagePlaceId;
-    private final int itemId;
+    private final String storagePlaceId;
+    private final String itemId;
     private int quantity = 0;
 
     public  ItemStorageInfo() {
         this.itemStorageInfoId = 0;
-        this.storagePlaceId = 0;
-        this.itemId = 0;
+        this.storagePlaceId = "N/E";
+        this.itemId = "";
     }
 
-    public ItemStorageInfo(int itemStorageInfoId, int storagePlaceId, int itemId) {
+    public ItemStorageInfo(int itemStorageInfoId, String storagePlaceId, String itemId) {
         this.itemStorageInfoId = itemStorageInfoId;
         this.storagePlaceId = storagePlaceId;
         this.itemId = itemId;
         this.quantity = 0;
     }
 
-    public int getStoragePlaceId() {
+    public String getStoragePlaceId() {
         return storagePlaceId;
     }
 
@@ -30,7 +30,7 @@ public class ItemStorageInfo {
         return itemStorageInfoId;
     }
 
-    public int getItemId() {
+    public String getItemId() {
         return itemId;
     }
 

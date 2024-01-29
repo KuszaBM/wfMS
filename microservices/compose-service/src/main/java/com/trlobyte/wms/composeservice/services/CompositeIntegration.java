@@ -1,6 +1,7 @@
 package com.trlobyte.wms.composeservice.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.kusza.api.composite.ResponseMoveOrder;
 import org.kusza.api.core.item.Item;
 import org.kusza.api.core.item.ItemService;
 import org.kusza.api.core.storage.StoragePlace;
@@ -60,7 +61,7 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
     }
 
     @Override
-    public Item getItem(int itemId) {
+    public Item getItem(String itemId) {
         try {
             String requestUrl = itemServiceUrl + itemId;
             LOG.debug("Calling getItem APU on URL: {}", requestUrl);
@@ -84,12 +85,13 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
     }
 
     @Override
-    public void updateItemQuantityInLocation(ItemStorageRequest request) {
+    public ResponseMoveOrder updateItemQuantityInLocation(ItemStorageRequest request) {
 
+        return null;
     }
 
     @Override
-    public List<ItemStorageInfo> getItemStorageInfo(int itemId) {
+    public List<ItemStorageInfo> getItemStorageInfo(String itemId) {
         try {
             String url = warehouseServiceUrl + "getItemStorageInfo/" + itemId;
             LOG.info("Will call getItemStorageInfo{} API on URL: {}", itemId, url);
@@ -126,12 +128,12 @@ public class CompositeIntegration implements ItemService, StorageService, Wareho
     }
 
     @Override
-    public void addItemToStoragePlace(int storagePlaceId, int itemId) {
+    public void addItemToStoragePlace(String storagePlaceId, String itemId) {
 
     }
 
     @Override
-    public StoragePlace getStoragePlace(int storageId) {
+    public StoragePlace getStoragePlace(String storageId) {
         return null;
     }
 }

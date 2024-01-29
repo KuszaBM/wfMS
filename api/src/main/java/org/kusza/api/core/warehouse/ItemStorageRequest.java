@@ -4,36 +4,38 @@ import java.sql.Timestamp;
 
 public class ItemStorageRequest {
     private final int operationId;
-    private final int itemId;
-    private final int fromLocationId;
+    private final String itemId;
+    private final String fromLocationId;
     private final int itemQty;
-    private final int storagePlaceId;
+    private final String storagePlaceId;
     private final Timestamp requestedTs;
-    private Timestamp acceptedTs = null;
+    private Timestamp acceptedTs;
 
-    public ItemStorageRequest(int operationId, int itemId, int fromLocationId, int itemQty, int storagePlaceId, Timestamp requestedTs) {
+    public ItemStorageRequest(int operationId, String itemId, String fromLocationId, int itemQty, String storagePlaceId, Timestamp requestedTs) {
         this.operationId = operationId;
         this.itemId = itemId;
         this.fromLocationId = fromLocationId;
         this.itemQty = itemQty;
         this.storagePlaceId = storagePlaceId;
         this.requestedTs = requestedTs;
+        this.acceptedTs = null;
     }
 
     public ItemStorageRequest() {
         this.operationId = 0;
-        this.itemId = 0;
-        this.fromLocationId = 0;
+        this.itemId = "";
+        this.fromLocationId = "";
         this.itemQty = 0;
-        this.storagePlaceId = 0;
+        this.storagePlaceId = "";
         this.requestedTs = null;
+        this.acceptedTs = null;
     }
 
     public int getOperationId() {
         return operationId;
     }
 
-    public int getItemId() {
+    public String getItemId() {
         return itemId;
     }
 
@@ -41,11 +43,11 @@ public class ItemStorageRequest {
         return itemQty;
     }
 
-    public int getStoragePlaceId() {
+    public String getStoragePlaceId() {
         return storagePlaceId;
     }
 
-    public int getFromLocationId() {
+    public String getFromLocationId() {
         return fromLocationId;
     }
 

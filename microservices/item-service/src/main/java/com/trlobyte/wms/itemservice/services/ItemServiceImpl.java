@@ -25,15 +25,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item getItem(int itemId) {
-        Item i = inMemoryItemRepo.getItemById(itemId);
-        if(itemId < 0) {
-            throw new InvalidInputException("Invalid Id");
-        }
-        if(i == null) {
-            throw new NotFoundException("Item with Id " + itemId + " not found");
-        }
-        return i;
+    public Item getItem(String itemId) {
+        return null;
     }
 
     @Override

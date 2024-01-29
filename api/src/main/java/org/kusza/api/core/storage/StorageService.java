@@ -12,10 +12,10 @@ public interface StorageService {
     @PutMapping(
             value = "/storage/addItemToLocation"
     )
-    void addItemToStoragePlace(@RequestParam int storagePlaceId, @RequestParam int itemId);
+    void addItemToStoragePlace(@RequestParam String storagePlaceId, @RequestParam String itemId);
     @GetMapping(
             value = "/storage/{storageId}",
             produces = "application/json"
     )
-    StoragePlace getStoragePlace(@PathVariable int storageId);
+    StoragePlace getStoragePlace(@PathVariable String storageId);
 }

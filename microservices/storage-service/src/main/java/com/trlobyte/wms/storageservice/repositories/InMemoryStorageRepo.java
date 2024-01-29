@@ -12,15 +12,15 @@ import java.util.Map;
 @Repository
 public class InMemoryStorageRepo {
     Logger LOG = LoggerFactory.getLogger("StorageRepo");
-    private Map<Integer, StoragePlace> storagePlaces;
+    private Map<String, StoragePlace> storagePlaces;
     public StoragePlace getStoragePlace(int storagePlaceId) {
         return storagePlaces.get(storagePlaceId);
     }
     public InMemoryStorageRepo() {
         this.storagePlaces = new HashMap<>();
-        addStoragePlace(new StoragePlace(1, 1, "A01"));
-        addStoragePlace(new StoragePlace(2, 1, "A02"));
-        addStoragePlace(new StoragePlace(3, 1, "A03"));
+        addStoragePlace(new StoragePlace("A01-1", "WAR01", "A01"));
+        addStoragePlace(new StoragePlace("A02-1", "WAR01", "A02"));
+        addStoragePlace(new StoragePlace("B01-1", "WAR01", "B01"));
     }
     public void addStoragePlace(StoragePlace storagePlace) {
         if(storagePlaces.get(storagePlace.getStoragePlaceId()) == null) {

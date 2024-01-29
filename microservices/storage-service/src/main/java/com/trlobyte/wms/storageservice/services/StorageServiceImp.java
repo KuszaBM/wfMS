@@ -22,14 +22,14 @@ public class StorageServiceImp implements StorageService {
     }
 
     @Override
-    public void addItemToStoragePlace(int storagePlaceId, int itemId) {
-        StoragePlace sp  = inMemoryStorageRepo.getStoragePlace(storagePlaceId);
-        if(sp != null) {
-            sp.assignItemToLocation(itemId);
-        }
+    public void addItemToStoragePlace(String storagePlaceId, String itemId) {
+//        StoragePlace sp  = inMemoryStorageRepo.getStoragePlace(storagePlaceId);
+//        if(sp != null) {
+//            sp.assignItemToLocation(itemId);
+//        }
     }
     @Override
-    public StoragePlace getStoragePlace(int storageId) {
-        return inMemoryStorageRepo.getStoragePlace(storageId);
+    public StoragePlace getStoragePlace(String storageId) {
+        return null;
     }
 }

@@ -9,7 +9,7 @@ public interface ItemService {
     @GetMapping(
             value = "/item/{itemId}",
             produces = "application/json")
-    Item getItem(@PathVariable int itemId);
+    Item getItem(@PathVariable String itemId);
 
     @PostMapping(
             value = "/item/add",

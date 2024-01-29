@@ -1,13 +1,13 @@
 package org.kusza.api.core.item;
 
 public class Item {
-    private final int itemId;
+    private final String itemId;
     private final String name;
     private final int weight;
     private final double price;
 
 
-    public Item(int itemId, String name, int weight, double price) {
+    public Item(String itemId, String name, int weight, double price) {
         this.itemId = itemId;
         this.name = name;
         this.weight = weight;
@@ -15,13 +15,13 @@ public class Item {
     }
 
     public Item() {
-        this.itemId = 0;
+        this.itemId = null;
         this.name = null;
         this.weight = 0;
         this.price = 0.0;
     }
 
-    public int getItemId() {
+    public String getItemId() {
         return itemId;
     }
 

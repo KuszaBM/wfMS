@@ -4,12 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class StoragePlace {
-    private final int storagePlaceId;
+    private final String storagePlaceId;
     private String storagePlaceName;
-    private final int storageId;
+    private final String storageId;
     private Set<Integer> itemsInLocation;
     //TODO in future add more info about storage place:
-    public StoragePlace(int storagePlaceId, int storageId, String storagePlaceName) {
+    public StoragePlace(String storagePlaceId, String storageId, String storagePlaceName) {
         this.storagePlaceName = storagePlaceName;
         this.storagePlaceId = storagePlaceId;
         this.storageId = storageId;
@@ -25,13 +25,13 @@ public class StoragePlace {
     public void setStoragePlaceName(String storagePlaceName) {
         this.storagePlaceName = storagePlaceName;
     }
-    public int getStoragePlaceId() {
+    public String getStoragePlaceId() {
         return storagePlaceId;
     }
     public String getStoragePlaceName() {
         return storagePlaceName;
     }
-    public int getStorageId() {
+    public String getStorageId() {
         return storageId;
     }
 }
