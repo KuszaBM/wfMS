@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.testcontainers.shaded.org.yaml.snakeyaml.constructor.DuplicateKeyException;
 
 @DataMongoTest
 public class PersistenceTests extends MongoDbTestBase {
@@ -38,6 +39,13 @@ public class PersistenceTests extends MongoDbTestBase {
                 .toList().get(0);
         assertEqualItemStorageInfo(newEntity, foundEntity);
         assertEquals(2, repository.count());
+    }
+    @Test
+    public void testDuplicateError() {
+        assertThrows(DuplicateKeyException.class, () -> {
+            ItemStorageInfoEntity entity = new ItemStorageInfoEntity("A01", "P01", 50);
+            repository.save(entity);
+        });
     }
     private void assertEqualItemStorageInfo(ItemStorageInfoEntity expectedEntity, ItemStorageInfoEntity actualEntity) {
         Assertions.assertEquals(expectedEntity.getId() ,actualEntity.getId());
