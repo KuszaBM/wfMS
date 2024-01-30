@@ -2,25 +2,26 @@ package com.trlobyte.wms.warehouseservice.repositories;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collation = "itemStorageInfos")
+@CompoundIndexes({
+        @CompoundIndex(name = "unique_pair", def = "{'storagePlaceId' : 1, 'itemId' : 1}", unique = true)
+})
 public class ItemStorageInfoEntity {
-
     @Id
     private String id;
     @Version
     private Integer version;
-    @Indexed(unique = true)
-    private int itemStorageInfoId;
     private final String storagePlaceId;
     private final String itemId;
     private int quantity;
 
 
-    public ItemStorageInfoEntity(int itemStorageInfoId, String storagePlaceId, String itemId, int quantity) {
-        this.itemStorageInfoId = itemStorageInfoId;
+    public ItemStorageInfoEntity(String storagePlaceId, String itemId, int quantity) {
         this.storagePlaceId = storagePlaceId;
         this.itemId = itemId;
         this.quantity = quantity;
@@ -40,10 +41,6 @@ public class ItemStorageInfoEntity {
 
     public void setVersion(Integer version) {
         this.version = version;
-    }
-
-    public int getItemStorageInfoId() {
-        return itemStorageInfoId;
     }
 
     public String getStoragePlaceId() {
