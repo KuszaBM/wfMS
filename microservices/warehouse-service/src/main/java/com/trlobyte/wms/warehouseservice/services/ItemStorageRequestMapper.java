@@ -8,7 +8,6 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface ItemStorageRequestMapper {
-    @Mappings({})
     ItemStorageRequest entityToApi(ItemStorageRequestEntity entity);
     @Mappings({
             @Mapping(target = "id", ignore = true), @Mapping(target = "version", ignore = true)

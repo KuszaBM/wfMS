@@ -8,7 +8,6 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface ItemStorageInfoMapper {
-    @Mappings({})
     ItemStorageInfo entityToApi(ItemStorageInfoEntity entity);
     @Mappings({
             @Mapping(target = "id", ignore = true), @Mapping(target = "version", ignore = true)
