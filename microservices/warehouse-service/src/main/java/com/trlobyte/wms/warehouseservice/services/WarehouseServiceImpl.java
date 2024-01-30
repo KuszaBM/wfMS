@@ -66,7 +66,9 @@ public class WarehouseServiceImpl implements WarehouseService {
         }
         if(toLocationEntity != null) {
             if(toLocationEntity.isEmpty()) {
-                ItemStorageInfoEntity e = itemStorageInfoRepository.save(new ItemStorageInfoEntity(request.getStoragePlaceId(), request.getItemId(), request.getItemQty()));
+                ItemStorageInfo itemStorageInfo = new ItemStorageInfo(1, request.getStoragePlaceId(), request.getItemId());
+                itemStorageInfo.setQuantity(request.getItemQty());
+                ItemStorageInfoEntity e = itemStorageInfoRepository.save(itemStorageInfoMapper.apiToEntity(itemStorageInfo));
             } else {
                 ItemStorageInfoEntity e = toLocationEntity.get(0);
                 e.setQuantity(e.getQuantity() + request.getItemQty());

@@ -19,6 +19,10 @@ public class ItemStorageInfo {
         this.quantity = 0;
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public String getStoragePlaceId() {
         return storagePlaceId;
     }

@@ -18,29 +18,8 @@ public class ItemStorageInfoEntity {
     private final String itemId;
     private int quantity;
 
-    public ItemStorageInfoEntity(int itemStorageInfoId, String storagePlaceId, String itemId) {
-        this.itemStorageInfoId = itemStorageInfoId;
-        this.storagePlaceId = storagePlaceId;
-        this.itemId = itemId;
-        this.quantity = 0;
-    }
 
     public ItemStorageInfoEntity(int itemStorageInfoId, String storagePlaceId, String itemId, int quantity) {
-        this.itemStorageInfoId = itemStorageInfoId;
-        this.storagePlaceId = storagePlaceId;
-        this.itemId = itemId;
-        this.quantity = quantity;
-    }
-    public ItemStorageInfoEntity(String storagePlaceId, String itemId, int quantity) {
-        this.itemStorageInfoId = itemStorageInfoId;
-        this.storagePlaceId = storagePlaceId;
-        this.itemId = itemId;
-        this.quantity = quantity;
-    }
-
-    public ItemStorageInfoEntity(String id, Integer version, int itemStorageInfoId, String storagePlaceId, String itemId, int quantity) {
-        this.id = id;
-        this.version = version;
         this.itemStorageInfoId = itemStorageInfoId;
         this.storagePlaceId = storagePlaceId;
         this.itemId = itemId;
