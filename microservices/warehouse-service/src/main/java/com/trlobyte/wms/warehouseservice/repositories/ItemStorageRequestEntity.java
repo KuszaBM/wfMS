@@ -23,27 +23,6 @@ public class ItemStorageRequestEntity {
     private final Timestamp requestedTs;
     private Timestamp acceptedTs;
 
-    public ItemStorageRequestEntity(int operationId, int itemId, String fromLocationId, int itemQty, String storagePlaceId, Timestamp requestedTs) {
-        this.operationId = operationId;
-        this.itemId = itemId;
-        this.fromLocationId = fromLocationId;
-        this.itemQty = itemQty;
-        this.storagePlaceId = storagePlaceId;
-        this.requestedTs = requestedTs;
-    }
-
-    public ItemStorageRequestEntity(String id, Integer version, int operationId, int itemId, String fromLocationId, int itemQty, String storagePlaceId, Timestamp requestedTs, Timestamp acceptedTs) {
-        this.id = id;
-        this.version = version;
-        this.operationId = operationId;
-        this.itemId = itemId;
-        this.fromLocationId = fromLocationId;
-        this.itemQty = itemQty;
-        this.storagePlaceId = storagePlaceId;
-        this.requestedTs = requestedTs;
-        this.acceptedTs = acceptedTs;
-    }
-
     public ItemStorageRequestEntity(int operationId, int itemId, String fromLocationId, int itemQty, String storagePlaceId, Timestamp requestedTs, Timestamp acceptedTs) {
         this.operationId = operationId;
         this.itemId = itemId;
