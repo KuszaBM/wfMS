@@ -38,6 +38,15 @@ public class ItemStorageInfoEntity {
         this.quantity = quantity;
     }
 
+    public ItemStorageInfoEntity(String id, Integer version, int itemStorageInfoId, String storagePlaceId, String itemId, int quantity) {
+        this.id = id;
+        this.version = version;
+        this.itemStorageInfoId = itemStorageInfoId;
+        this.storagePlaceId = storagePlaceId;
+        this.itemId = itemId;
+        this.quantity = quantity;
+    }
+
     public String getId() {
         return id;
     }
